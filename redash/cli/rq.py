@@ -9,7 +9,7 @@ from flask.cli import AppGroup
 from rq import Connection
 from rq.worker import WorkerStatus
 from sqlalchemy.orm import configure_mappers
-from supervisor_checks import check_runner
+# from supervisor_checks import check_runner
 from supervisor_checks.check_modules import base
 
 from redash import rq_redis_connection
@@ -94,8 +94,8 @@ class WorkerHealthcheck(base.BaseCheck):
         return is_healthy
 
 
-@manager.command()
-def healthcheck():
-    return check_runner.CheckRunner(
-        "worker_healthcheck", "worker", None, [(WorkerHealthcheck, {})]
-    ).run()
+# @manager.command()
+# def healthcheck():
+#     return check_runner.CheckRunner(
+#         "worker_healthcheck", "worker", None, [(WorkerHealthcheck, {})]
+#     ).run()

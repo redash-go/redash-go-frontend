@@ -14,7 +14,7 @@ flask-mail==0.9.1
 flask-talisman==0.7.0
 Flask-Limiter==0.9.3
 Flask-WTF==0.14.3
-passlib==1.7.1
+passlib==1.7.4
 aniso8601==8.0.0
 blinker==1.4
 psycopg2==2.8.3
@@ -38,7 +38,7 @@ rq-scheduler==0.9.1
 jsonschema==3.1.1
 RestrictedPython==5.0
 pysaml2==6.5.0
-pycrypto==2.6.1
+# pycrypto==2.6.1
 python-dotenv==0.19.2
 funcy==1.13
 sentry-sdk>=0.14.3,<0.15.0
