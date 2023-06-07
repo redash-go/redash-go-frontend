@@ -12,8 +12,6 @@
     "watch:viz": "(cd viz-lib && yarn watch:babel)",
     "watch": "SET NODE_OPTIONS=--openssl-legacy-provider  && npm-run-all --parallel watch:*",
     "webpack-dev-server": "webpack-dev-server",
-    "analyze": "yarn clean && BUNDLE_ANALYZER=on webpack",
-    "analyze:build": "yarn clean && NODE_ENV=production BUNDLE_ANALYZER=on webpack",
     "prettier": "prettier --write 'client/app/**/*.{js,jsx,ts,tsx}' 'client/cypress/**/*.{js,jsx,ts,tsx}'",
     "type-check": "tsc --noEmit --project client/tsconfig.json",
     "type-check:watch": "yarn type-check --watch",
@@ -64,7 +62,6 @@
     "react-grid-layout": "^0.18.2",
     "react-resizable": "^1.10.1",
     "react-virtualized": "^9.21.2",
-    "sql-formatter": "git@github.com:getredash/sql-formatter.git",
     "universal-router": "^8.3.0",
     "use-debounce": "^3.1.0",
     "use-media": "^1.4.0"
@@ -85,12 +82,10 @@
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.14.2",
     "@types/react-dom": "^16.9.10",
-    "@types/sql-formatter": "^2.3.0",
     "@typescript-eslint/eslint-plugin": "^2.10.0",
     "@typescript-eslint/parser": "^2.10.0",
     "atob": "^2.1.2",
     "babel-eslint": "^10.0.3",
-    "babel-jest": "^24.1.0",
     "babel-loader": "^8.0.5",
     "babel-plugin-istanbul": "^6.0.0",
     "babel-plugin-transform-builtin-extend": "^1.1.2",
@@ -107,7 +102,6 @@
     "eslint-plugin-compat": "^3.3.0",
     "eslint-plugin-flowtype": "^3.13.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.2.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-no-only-tests": "^2.4.0",
     "eslint-plugin-react": "^7.17.0",
@@ -140,23 +134,6 @@
   },
   "optionalDependencies": {
     "fsevents": "^2.3.2"
-  },
-  "jest": {
-    "rootDir": "./client",
-    "setupFiles": [
-      "./app/__tests__/enzyme_setup.js",
-      "./app/__tests__/mocks.js"
-    ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "moduleNameMapper": {
-      "^@/(.*)": "<rootDir>/app/$1",
-      "\\.(css|less)$": "identity-obj-proxy"
-    },
-    "testPathIgnorePatterns": [
-      "<rootDir>/app/__tests__/"
-    ]
   },
   "nyc": {
     "include": [
