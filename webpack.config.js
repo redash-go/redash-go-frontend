@@ -7,8 +7,6 @@ const ManifestPlugin = require("webpack-manifest-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const LessPluginAutoPrefix = require("less-plugin-autoprefix");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 const path = require("path");
@@ -34,7 +32,7 @@ const isDevelopment = !isProduction;
 const isHotReloadingEnabled =
   isDevelopment && process.env.HOT_RELOAD === "true";
 
-const redashBackend = process.env.REDASH_BACKEND || "http://localhost:5001";
+const redashBackend = process.env.REDASH_BACKEND || "http://localhost:5000";
 const baseHref = CONFIG.baseHref || "/";
 const staticPath = CONFIG.staticPath || "/static/";
 const htmlTitle = CONFIG.title || "Redash";
@@ -66,22 +64,22 @@ const config = {
     app: [
       "./client/app/index.js",
       "./client/app/assets/less/main.less",
-      "./client/app/assets/less/ant.less"
+      "./client/app/assets/less/ant.less",
     ],
-    server: ["./client/app/assets/less/server.less"]
+    server: ["./client/app/assets/less/server.less"],
   },
   output: {
     path: path.join(basePath, "./dist"),
     filename: isProduction ? "[name].[chunkhash].js" : "[name].js",
-    publicPath: staticPath
+    publicPath: staticPath,
   },
   resolve: {
     symlinks: false,
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     alias: {
       "@": appPath,
-      extensions: extensionPath
-    }
+      extensions: extensionPath,
+    },
   },
   plugins: [
     new WebpackBuildNotifierPlugin({ title: "Redash" }),
@@ -94,36 +92,36 @@ const config = {
       release: process.env.BUILD_VERSION || "dev",
       staticPath,
       baseHref,
-      title: htmlTitle
+      title: htmlTitle,
     }),
     new HtmlWebpackPlugin({
       template: "./client/app/multi_org.html",
       filename: "multi_org.html",
-      excludeChunks: ["server"]
+      excludeChunks: ["server"],
     }),
     isProduction &&
       new MiniCssExtractPlugin({
-        filename: "[name].[chunkhash].css"
+        filename: "[name].[chunkhash].css",
       }),
     new ManifestPlugin({
       fileName: "asset-manifest.json",
-      publicPath: ""
+      publicPath: "",
     }),
     new CopyWebpackPlugin([
       { from: "client/app/assets/robots.txt" },
       { from: "client/app/unsupported.html" },
       { from: "client/app/unsupportedRedirect.js" },
       { from: "client/app/assets/css/*.css", to: "styles/", flatten: true },
-      { from: "client/app/assets/fonts", to: "fonts/" }
+      { from: "client/app/assets/fonts", to: "fonts/" },
     ]),
-    isHotReloadingEnabled && new ReactRefreshWebpackPlugin({ overlay: false })
+    isHotReloadingEnabled && new ReactRefreshWebpackPlugin({ overlay: false }),
   ].filter(Boolean),
   optimization: {
     splitChunks: {
-      chunks: chunk => {
+      chunks: (chunk) => {
         return chunk.name != "server";
-      }
-    }
+      },
+    },
   },
   module: {
     rules: [
@@ -135,58 +133,58 @@ const config = {
             loader: require.resolve("babel-loader"),
             options: {
               plugins: [
-                isHotReloadingEnabled && require.resolve("react-refresh/babel")
-              ].filter(Boolean)
-            }
+                isHotReloadingEnabled && require.resolve("react-refresh/babel"),
+              ].filter(Boolean),
+            },
           },
-          require.resolve("eslint-loader")
-        ]
+          require.resolve("eslint-loader"),
+        ],
       },
       {
         test: /\.html$/,
         exclude: [/node_modules/, /index\.html/, /multi_org\.html/],
         use: [
           {
-            loader: "raw-loader"
-          }
-        ]
+            loader: "raw-loader",
+          },
+        ],
       },
       {
         test: /\.css$/,
         use: [
           {
-            loader: isProduction ? MiniCssExtractPlugin.loader : "style-loader"
+            loader: isProduction ? MiniCssExtractPlugin.loader : "style-loader",
           },
           {
             loader: "css-loader",
             options: {
-              minimize: process.env.NODE_ENV === "production"
-            }
-          }
-        ]
+              minimize: process.env.NODE_ENV === "production",
+            },
+          },
+        ],
       },
       {
         test: /\.less$/,
         use: [
           {
-            loader: isProduction ? MiniCssExtractPlugin.loader : "style-loader"
+            loader: isProduction ? MiniCssExtractPlugin.loader : "style-loader",
           },
           {
             loader: "css-loader",
             options: {
-              minimize: isProduction
-            }
+              minimize: isProduction,
+            },
           },
           {
             loader: "less-loader",
             options: {
               plugins: [
-                new LessPluginAutoPrefix({ browsers: ["last 3 versions"] })
+                new LessPluginAutoPrefix({ browsers: ["last 3 versions"] }),
               ],
-              javascriptEnabled: true
-            }
-          }
-        ]
+              javascriptEnabled: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -196,10 +194,10 @@ const config = {
             options: {
               context: path.resolve(appPath, "./assets/images/"),
               outputPath: "images/",
-              name: "[path][name].[ext]"
-            }
-          }
-        ]
+              name: "[path][name].[ext]",
+            },
+          },
+        ],
       },
       {
         test: /\.geo\.json$/,
@@ -209,10 +207,10 @@ const config = {
             loader: "file-loader",
             options: {
               outputPath: "data/",
-              name: "[hash:7].[name].[ext]"
-            }
-          }
-        ]
+              name: "[hash:7].[name].[ext]",
+            },
+          },
+        ],
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
@@ -221,28 +219,28 @@ const config = {
             loader: "url-loader",
             options: {
               limit: 10000,
-              name: "fonts/[name].[hash:7].[ext]"
-            }
-          }
-        ]
-      }
-    ]
+              name: "fonts/[name].[hash:7].[ext]",
+            },
+          },
+        ],
+      },
+    ],
   },
   devtool: isProduction ? "source-map" : "cheap-eval-module-source-map",
   stats: {
     children: false,
     modules: false,
-    chunkModules: false
+    chunkModules: false,
   },
   watchOptions: {
-    ignored: /\.sw.$/
+    ignored: /\.sw.$/,
   },
   devServer: {
     inline: true,
     index: "/static/index.html",
     historyApiFallback: {
       index: "/static/index.html",
-      rewrites: [{ from: /./, to: "/static/index.html" }]
+      rewrites: [{ from: /./, to: "/static/index.html" }],
     },
     contentBase: false,
     publicPath: staticPath,
@@ -255,39 +253,35 @@ const config = {
           "/setup",
           "/status.json",
           "/api",
-          "/oauth"
+          "/oauth",
         ],
         target: redashBackend + "/",
         changeOrigin: false,
-        secure: false
+        secure: false,
       },
       {
-        context: path => {
+        context: (path) => {
           // CSS/JS for server-rendered pages should be served from backend
           return /^\/static\/[a-z]+\.[0-9a-fA-F]+\.(css|js)$/.test(path);
         },
         target: redashBackend + "/",
         changeOrigin: true,
-        secure: false
-      }
+        secure: false,
+      },
     ],
     stats: {
       modules: false,
-      chunkModules: false
+      chunkModules: false,
     },
-    hot: isHotReloadingEnabled
+    hot: isHotReloadingEnabled,
   },
   performance: {
-    hints: false
-  }
+    hints: false,
+  },
 };
 
 if (process.env.DEV_SERVER_HOST) {
   config.devServer.host = process.env.DEV_SERVER_HOST;
-}
-
-if (process.env.BUNDLE_ANALYZER) {
-  config.plugins.push(new BundleAnalyzerPlugin());
 }
 
 module.exports = maybeApplyOverrides(config);
