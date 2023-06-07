@@ -99,10 +99,10 @@ class Jobs extends React.Component {
             <React.Fragment>
               <Grid.Row gutter={15} className="m-b-15">
                 <Grid.Col span={8}>
-                  <CounterCard title="Started Jobs" value={overallCounters.started} loading={isLoading} />
+                  <CounterCard title="开始任务" value={overallCounters.started} loading={isLoading} />
                 </Grid.Col>
                 <Grid.Col span={8}>
-                  <CounterCard title="Queued Jobs" value={overallCounters.queued} loading={isLoading} />
+                  <CounterCard title="排队任务" value={overallCounters.queued} loading={isLoading} />
                 </Grid.Col>
               </Grid.Row>
 
@@ -132,7 +132,7 @@ routes.register(
   "Admin.Jobs",
   routeWithUserSession({
     path: "/admin/queries/jobs",
-    title: "RQ Status",
+    title: "队列状态",
     render: pageProps => <Jobs {...pageProps} />,
   })
 );

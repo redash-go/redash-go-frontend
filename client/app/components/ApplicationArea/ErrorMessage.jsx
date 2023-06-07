@@ -9,10 +9,10 @@ import { ErrorMessageDetails } from "@/components/ApplicationArea/ErrorMessageDe
 function getErrorMessageByStatus(status, defaultMessage) {
   switch (status) {
     case 404:
-      return "It seems like the page you're looking for cannot be found.";
+      return "当前页面不存在";
     case 401:
     case 403:
-      return "It seems like you don’t have permission to see this page.";
+      return "没有权限访问当前页面";
     default:
       return defaultMessage;
   }

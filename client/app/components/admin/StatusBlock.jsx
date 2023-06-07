@@ -13,7 +13,7 @@ export function General({ info }) {
   info = toPairs(info);
   return (
     <Card title="General" size="small">
-      {info.length === 0 && <div className="text-muted text-center">No data</div>}
+      {info.length === 0 && <div className="text-muted text-center">没有数据</div>}
       {info.length > 0 && (
         <List
           size="small"
@@ -31,7 +31,7 @@ export function General({ info }) {
 export function DatabaseMetrics({ info }) {
   return (
     <Card title="Redash Database" size="small">
-      {info.length === 0 && <div className="text-muted text-center">No data</div>}
+      {info.length === 0 && <div className="text-muted text-center">没有数据</div>}
       {info.length > 0 && (
         <List
           size="small"
@@ -50,7 +50,7 @@ export function Queues({ info }) {
   info = toPairs(info);
   return (
     <Card title="Queues" size="small">
-      {info.length === 0 && <div className="text-muted text-center">No data</div>}
+      {info.length === 0 && <div className="text-muted text-center">没有数据</div>}
       {info.length > 0 && (
         <List
           size="small"
@@ -92,7 +92,7 @@ export function Manager({ info }) {
 
   return (
     <Card title="Manager" size="small">
-      {!info && <div className="text-muted text-center">No data</div>}
+      {!info && <div className="text-muted text-center">没有数据</div>}
       {info && <List size="small" itemLayout="vertical" dataSource={items} renderItem={item => item} />}
     </Card>
   );

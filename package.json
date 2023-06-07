@@ -8,7 +8,7 @@
     "clean": "rm -rf ./client/dist/",
     "build:viz": "(cd viz-lib && yarn build:babel)",
     "build": "SET NODE_OPTIONS=--openssl-legacy-provider && yarn build:viz &&  webpack",
-    "watch:app": "webpack --watch --progress --colors -d",
+    "watch:app": "SET NODE_OPTIONS=--openssl-legacy-provider && webpack --watch --progress --colors -d",
     "watch:viz": "(cd viz-lib && yarn watch:babel)",
     "watch": "SET NODE_OPTIONS=--openssl-legacy-provider  && npm-run-all --parallel watch:*",
     "webpack-dev-server": "webpack-dev-server",
@@ -16,7 +16,7 @@
     "type-check": "tsc --noEmit --project client/tsconfig.json",
     "type-check:watch": "yarn type-check --watch",
     "preinstall": "cd viz-lib && yarn link --link-folder ../.yarn",
-    "postinstall": "(cd viz-lib && yarn --frozen-lockfile && yarn build:babel) && yarn link --link-folder ./.yarn @redash/viz"
+    "postinstall": "(cd viz-lib && yarn add && yarn build:babel) && yarn link --link-folder ./.yarn @redash/viz"
   },
   "repository": {
     "type": "git",

@@ -16,7 +16,7 @@ moment.updateLocale("en", {
   relativeTime: {
     future: "%s",
     past: "%s",
-    s: "just now",
+    s: "刚刚",
     m: "a minute ago",
     mm: "%d minutes ago",
     h: "an hour ago",

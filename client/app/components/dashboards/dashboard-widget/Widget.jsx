@@ -98,9 +98,10 @@ class Widget extends React.Component {
     const { widget, onDelete } = this.props;
 
     Modal.confirm({
-      title: "Delete Widget",
-      content: "Are you sure you want to remove this widget from the dashboard?",
-      okText: "Delete",
+      title: "删除部件",
+      content: "确定从仪表盘删除这个部件?",
+      cancelText:"取消",
+      okText: "删除",
       okType: "danger",
       onOk: () => widget.delete().then(onDelete),
       maskClosable: true,

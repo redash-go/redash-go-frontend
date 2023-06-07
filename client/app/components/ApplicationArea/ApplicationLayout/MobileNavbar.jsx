@@ -31,31 +31,31 @@ export default function MobileNavbar({ getPopupContainer }) {
             <Menu mode="vertical" theme="dark" selectable={false} className="mobile-navbar-menu">
               {currentUser.hasPermission("list_dashboards") && (
                 <Menu.Item key="dashboards">
-                  <Link href="dashboards">Dashboards</Link>
+                  <Link href="dashboards">仪表盘</Link>
                 </Menu.Item>
               )}
               {currentUser.hasPermission("view_query") && (
                 <Menu.Item key="queries">
-                  <Link href="queries">Queries</Link>
+                  <Link href="queries">查询</Link>
                 </Menu.Item>
               )}
               {currentUser.hasPermission("list_alerts") && (
                 <Menu.Item key="alerts">
-                  <Link href="alerts">Alerts</Link>
+                  <Link href="alerts">告警</Link>
                 </Menu.Item>
               )}
               <Menu.Item key="profile">
-                <Link href="users/me">Edit Profile</Link>
+                <Link href="users/me">编辑个人信息</Link>
               </Menu.Item>
               <Menu.Divider />
               {firstSettingsTab && (
                 <Menu.Item key="settings">
-                  <Link href={firstSettingsTab.path}>Settings</Link>
+                  <Link href={firstSettingsTab.path}>设置</Link>
                 </Menu.Item>
               )}
               {currentUser.hasPermission("super_admin") && (
                 <Menu.Item key="status">
-                  <Link href="admin/status">System Status</Link>
+                  <Link href="admin/status">系统状态</Link>
                 </Menu.Item>
               )}
               {currentUser.hasPermission("super_admin") && <Menu.Divider />}

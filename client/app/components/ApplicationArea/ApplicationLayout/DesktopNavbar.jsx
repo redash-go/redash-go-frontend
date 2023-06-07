@@ -86,7 +86,7 @@ export default function DesktopNavbar() {
           <Menu.Item key="dashboards" className={activeState.dashboards ? "navbar-active-item" : null}>
             <Link href="dashboards">
               <DesktopOutlinedIcon aria-label="Dashboard navigation button" />
-              <span className="desktop-navbar-label">Dashboards</span>
+              <span className="desktop-navbar-label">仪表盘</span>
             </Link>
           </Menu.Item>
         )}
@@ -94,7 +94,7 @@ export default function DesktopNavbar() {
           <Menu.Item key="queries" className={activeState.queries ? "navbar-active-item" : null}>
             <Link href="queries">
               <CodeOutlinedIcon aria-label="Queries navigation button" />
-              <span className="desktop-navbar-label">Queries</span>
+              <span className="desktop-navbar-label">查询</span>
             </Link>
           </Menu.Item>
         )}
@@ -102,7 +102,7 @@ export default function DesktopNavbar() {
           <Menu.Item key="alerts" className={activeState.alerts ? "navbar-active-item" : null}>
             <Link href="alerts">
               <AlertOutlinedIcon aria-label="Alerts navigation button" />
-              <span className="desktop-navbar-label">Alerts</span>
+              <span className="desktop-navbar-label">告警</span>
             </Link>
           </Menu.Item>
         )}
@@ -118,27 +118,27 @@ export default function DesktopNavbar() {
             title={
               <React.Fragment>
                 <PlusOutlinedIcon />
-                <span className="desktop-navbar-label">Create</span>
+                <span className="desktop-navbar-label">创建</span>
               </React.Fragment>
             }>
             {canCreateQuery && (
               <Menu.Item key="new-query">
                 <Link href="queries/new" data-test="CreateQueryMenuItem">
-                  New Query
+                  查询
                 </Link>
               </Menu.Item>
             )}
             {canCreateDashboard && (
               <Menu.Item key="new-dashboard">
                 <PlainButton data-test="CreateDashboardMenuItem" onClick={() => CreateDashboardDialog.showModal()}>
-                  New Dashboard
+                  仪表盘
                 </PlainButton>
               </Menu.Item>
             )}
             {canCreateAlert && (
               <Menu.Item key="new-alert">
                 <Link data-test="CreateAlertMenuItem" href="alerts/new">
-                  New Alert
+                  告警
                 </Link>
               </Menu.Item>
             )}
@@ -150,14 +150,14 @@ export default function DesktopNavbar() {
         <Menu.Item key="help">
           <HelpTrigger showTooltip={false} type="HOME" tabIndex={0}>
             <QuestionCircleOutlinedIcon />
-            <span className="desktop-navbar-label">Help</span>
+            <span className="desktop-navbar-label">帮助</span>
           </HelpTrigger>
         </Menu.Item>
         {firstSettingsTab && (
           <Menu.Item key="settings" className={activeState.dataSources ? "navbar-active-item" : null}>
             <Link href={firstSettingsTab.path} data-test="SettingsLink">
               <SettingOutlinedIcon />
-              <span className="desktop-navbar-label">Settings</span>
+              <span className="desktop-navbar-label">设置</span>
             </Link>
           </Menu.Item>
         )}
@@ -174,17 +174,17 @@ export default function DesktopNavbar() {
             </span>
           }>
           <Menu.Item key="profile">
-            <Link href="users/me">Profile</Link>
+            <Link href="users/me">个人信息</Link>
           </Menu.Item>
           {currentUser.hasPermission("super_admin") && (
             <Menu.Item key="status">
-              <Link href="admin/status">System Status</Link>
+              <Link href="admin/status">系统状态</Link>
             </Menu.Item>
           )}
           <Menu.Divider />
           <Menu.Item key="logout">
             <PlainButton data-test="LogOutButton" onClick={() => Auth.logout()}>
-              Log out
+              退出登录
             </PlainButton>
           </Menu.Item>
           <Menu.Divider />

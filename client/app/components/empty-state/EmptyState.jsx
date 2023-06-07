@@ -110,7 +110,7 @@ function EmptyState({
           show={isAvailable.dataSource}
           completed={isCompleted.dataSource}
           url="data_sources/new"
-          urlText="Connect a Data Source"
+          urlText="连接数据源"
         />
       );
     }
@@ -120,7 +120,7 @@ function EmptyState({
         key="dataSources"
         show={isAvailable.dataSource}
         completed={isCompleted.dataSource}
-        text="Ask an account admin to connect a data source"
+        text="提醒管理员连接数据源"
       />
     );
   };
@@ -138,7 +138,7 @@ function EmptyState({
           show={isAvailable.query}
           completed={isCompleted.query}
           url="queries/new"
-          urlText="Create your first Query"
+          urlText="创建查询"
         />
       ),
     },
@@ -150,7 +150,7 @@ function EmptyState({
           show={isAvailable.alert}
           completed={isCompleted.alert}
           url="alerts/new"
-          urlText="Create your first Alert"
+          urlText="创建告警"
         />
       ),
     },
@@ -162,7 +162,7 @@ function EmptyState({
           show={isAvailable.dashboard}
           completed={isCompleted.dashboard}
           onClick={showCreateDashboardDialog}
-          urlText="Create your first Dashboard"
+          urlText="创建仪表盘"
         />
       ),
     },
@@ -174,7 +174,7 @@ function EmptyState({
           show={isAvailable.inviteUsers}
           completed={isCompleted.inviteUsers}
           url="users/new"
-          urlText="Invite your team members"
+          urlText="邀请团队成员"
         />
       ),
     },

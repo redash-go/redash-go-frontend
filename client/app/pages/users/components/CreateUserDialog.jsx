@@ -8,8 +8,8 @@ import recordEvent from "@/services/recordEvent";
 import { useUniqueId } from "@/lib/hooks/useUniqueId";
 
 const formFields = [
-  { required: true, name: "name", title: "Name", type: "text", autoFocus: true },
-  { required: true, name: "email", title: "Email", type: "email" },
+  { required: true, name: "name", title: "名称", type: "text", autoFocus: true },
+  { required: true, name: "email", title: "邮箱", type: "email" },
 ];
 
 function CreateUserDialog({ dialog }) {
@@ -24,10 +24,10 @@ function CreateUserDialog({ dialog }) {
   return (
     <Modal
       {...dialog.props}
-      title="Create a New User"
+      title="创建新用户"
       footer={[
         <Button key="cancel" {...dialog.props.cancelButtonProps} onClick={dialog.dismiss}>
-          Cancel
+          取消
         </Button>,
         <Button
           key="submit"
@@ -36,7 +36,7 @@ function CreateUserDialog({ dialog }) {
           type="primary"
           form={formId}
           data-test="SaveUserButton">
-          Create
+          创建
         </Button>,
       ]}
       wrapProps={{

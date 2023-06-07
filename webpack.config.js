@@ -32,7 +32,7 @@ const isDevelopment = !isProduction;
 const isHotReloadingEnabled =
   isDevelopment && process.env.HOT_RELOAD === "true";
 
-const redashBackend = process.env.REDASH_BACKEND || "http://localhost:5000";
+const redashBackend = "http://127.0.0.1:5000";
 const baseHref = CONFIG.baseHref || "/";
 const staticPath = CONFIG.staticPath || "/static/";
 const htmlTitle = CONFIG.title || "Redash";
@@ -280,8 +280,7 @@ const config = {
   },
 };
 
-if (process.env.DEV_SERVER_HOST) {
-  config.devServer.host = process.env.DEV_SERVER_HOST;
-}
+// config.devServer.host = "localhost:8080";
 
+// console.log(process.env.DEV_SERVER_HOST);
 module.exports = maybeApplyOverrides(config);

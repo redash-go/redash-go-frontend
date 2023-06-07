@@ -114,7 +114,7 @@ class CreateSourceDialog extends React.Component {
         <div className="text-right">
           {HELP_TRIGGER_TYPES[helpTriggerType] && (
             <HelpTrigger className="f-13" type={helpTriggerType}>
-              Setup Instructions <i className="fa fa-question-circle" aria-hidden="true" />
+              安装说明 <i className="fa fa-question-circle" aria-hidden="true" />
               <span className="sr-only">(help)</span>
             </HelpTrigger>
           )}
@@ -155,20 +155,20 @@ class CreateSourceDialog extends React.Component {
     return (
       <Modal
         {...dialog.props}
-        title={`Create a New ${sourceType}`}
+        title={`创建一个新的 ${sourceType}`}
         footer={
           currentStep === StepEnum.SELECT_TYPE
             ? [
                 <Button key="cancel" onClick={() => dialog.dismiss()} data-test="CreateSourceCancelButton">
-                  Cancel
+                  取消
                 </Button>,
                 <Button key="submit" type="primary" disabled>
-                  Create
+                  创建
                 </Button>,
               ]
             : [
                 <Button key="previous" onClick={this.resetType}>
-                  Previous
+                  上一步
                 </Button>,
                 <Button
                   key="submit"
@@ -177,19 +177,19 @@ class CreateSourceDialog extends React.Component {
                   type="primary"
                   loading={savingSource}
                   data-test="CreateSourceSaveButton">
-                  Create
+                  创建
                 </Button>,
               ]
         }>
         <div data-test="CreateSourceDialog">
           <Steps className="hidden-xs m-b-10" size="small" current={currentStep} progressDot>
             {currentStep === StepEnum.CONFIGURE_IT ? (
-              <Step title={<a>Type Selection</a>} className="clickable" onClick={this.resetType} />
+              <Step title={<a>类型选择</a>} className="clickable" onClick={this.resetType} />
             ) : (
-              <Step title="Type Selection" />
+              <Step title="类型选择" />
             )}
-            <Step title="Configuration" />
-            <Step title="Done" />
+            <Step title="配置" />
+            <Step title="完成" />
           </Steps>
           {currentStep === StepEnum.SELECT_TYPE && this.renderTypeSelector()}
           {currentStep !== StepEnum.SELECT_TYPE && this.renderForm()}

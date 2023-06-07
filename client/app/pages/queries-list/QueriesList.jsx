@@ -32,25 +32,25 @@ const sidebarMenu = [
   {
     key: "all",
     href: "queries",
-    title: "All Queries",
+    title: "全部查询",
     icon: () => <Sidebar.MenuIcon icon="fa fa-code" />,
   },
   {
     key: "my",
     href: "queries/my",
-    title: "My Queries",
+    title: "我的查询",
     icon: () => <Sidebar.ProfileImage user={currentUser} />,
   },
   {
     key: "favorites",
     href: "queries/favorites",
-    title: "Favorites",
+    title: "我的收藏",
     icon: () => <Sidebar.MenuIcon icon="fa fa-star" />,
   },
   {
     key: "archive",
     href: "queries/archive",
-    title: "Archived",
+    title: "存档",
     icon: () => <Sidebar.MenuIcon icon="fa fa-archive" />,
   },
 ];
@@ -67,21 +67,21 @@ const listColumns = [
       </React.Fragment>
     ),
     {
-      title: "Name",
+      title: "名称",
       field: "name",
       width: null,
     }
   ),
-  Columns.custom((text, item) => item.user.name, { title: "Created By", width: "1%" }),
-  Columns.dateTime.sortable({ title: "Created At", field: "created_at", width: "1%" }),
+  Columns.custom((text, item) => item.user.name, { title: "创建人", width: "1%" }),
+  Columns.dateTime.sortable({ title: "创建时间", field: "created_at", width: "1%" }),
   Columns.dateTime.sortable({
-    title: "Last Executed At",
+    title: "最后执行时间",
     field: "retrieved_at",
     orderByField: "executed_at",
     width: "1%",
   }),
   Columns.custom.sortable((text, item) => <SchedulePhrase schedule={item.schedule} isNew={item.isNew()} />, {
-    title: "Refresh Schedule",
+    title: "刷新调度",
     field: "schedule",
     width: "1%",
   }),
@@ -124,7 +124,7 @@ function QueriesList({ controller }) {
             currentUser.hasPermission("create_query") ? (
               <Link.Button block type="primary" href="queries/new">
                 <i className="fa fa-plus m-r-5" aria-hidden="true" />
-                New Query
+                创建新查询
               </Link.Button>
             ) : null
           }
@@ -132,7 +132,7 @@ function QueriesList({ controller }) {
         <Layout>
           <Layout.Sidebar className="m-b-0">
             <Sidebar.SearchInput
-              placeholder="Search Queries..."
+              placeholder="搜索查询"
               label="Search queries"
               value={controller.searchTerm}
               onChange={controller.updateSearch}
@@ -206,7 +206,7 @@ routes.register(
   "Queries.List",
   routeWithUserSession({
     path: "/queries",
-    title: "Queries",
+    title: "查询",
     render: pageProps => <QueriesListPage {...pageProps} currentPage="all" />,
   })
 );
@@ -214,7 +214,7 @@ routes.register(
   "Queries.Favorites",
   routeWithUserSession({
     path: "/queries/favorites",
-    title: "Favorite Queries",
+    title: "收藏查询",
     render: pageProps => <QueriesListPage {...pageProps} currentPage="favorites" />,
   })
 );
@@ -222,7 +222,7 @@ routes.register(
   "Queries.Archived",
   routeWithUserSession({
     path: "/queries/archive",
-    title: "Archived Queries",
+    title: "归档查询",
     render: pageProps => <QueriesListPage {...pageProps} currentPage="archive" />,
   })
 );
@@ -230,7 +230,7 @@ routes.register(
   "Queries.My",
   routeWithUserSession({
     path: "/queries/my",
-    title: "My Queries",
+    title: "我的查询",
     render: pageProps => <QueriesListPage {...pageProps} currentPage="my" />,
   })
 );

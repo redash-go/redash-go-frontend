@@ -40,15 +40,15 @@ const queryJobsColumns = [
   { title: "Data Source ID", dataIndex: ["meta", "data_source_id"] },
   { title: "User ID", dataIndex: ["meta", "user_id"] },
   Columns.custom(scheduled => scheduled.toString(), { title: "Scheduled", dataIndex: ["meta", "scheduled"] }),
-  Columns.timeAgo({ title: "Start Time", dataIndex: "started_at" }),
-  Columns.timeAgo({ title: "Enqueue Time", dataIndex: "enqueued_at" }),
+  Columns.timeAgo({ title: "开始时间", dataIndex: "started_at" }),
+  Columns.timeAgo({ title: "排队时间", dataIndex: "enqueued_at" }),
 ];
 
 const otherJobsColumns = [
-  { title: "Queue", dataIndex: "origin" },
-  { title: "Job Name", dataIndex: "name" },
-  Columns.timeAgo({ title: "Start Time", dataIndex: "started_at" }),
-  Columns.timeAgo({ title: "Enqueue Time", dataIndex: "enqueued_at" }),
+  { title: "队列", dataIndex: "origin" },
+  { title: "任务名称", dataIndex: "name" },
+  Columns.timeAgo({ title: "开始时间", dataIndex: "started_at" }),
+  Columns.timeAgo({ title: "排队时间", dataIndex: "enqueued_at" }),
 ];
 
 const workersColumns = [
